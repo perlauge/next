@@ -362,13 +362,13 @@ Om du har Docker installert på maskinen kan du bygge og kjøre prosjketet som e
 
 #### 13: Dockerfile
 
-Kopier inn `Dockerfile` fra dette repoet til roten på prosjektet, et helt enkelt oppsett som kjører appen med nodejs. 
+Kopier inn `Dockerfile` fra mappen `demo` i dette repoet til roten på prosjektet (`basic-next`mappen), et helt enkelt oppsett som kjører appen med nodejs. 
 
 ---
 
 #### 14: next.config.mjs
 
-Legg til `output: "standalone"` i `next.config.mjs`, evt. se eksempelfilen `next.config.mjs` i dette repoet:
+Legg til `output: "standalone"` i `next.config.ts`:
 
 ```js
  output: "standalone",
@@ -378,7 +378,7 @@ Legg til `output: "standalone"` i `next.config.mjs`, evt. se eksempelfilen `next
 
 #### 15: public
 
-Om du ikke har en `public` mappe på roten av prosjektet kan det være du må opprette den mappen også.
+Om du ikke har en `public` mappe på roten av prosjektet (altså i mappen `basic-next`) kan det være du må opprette den mappen også.
 
 ---
 
