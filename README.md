@@ -1,31 +1,31 @@
-# code-academy-next
+# code-academy-next 🚀
 
-Målet med workshopen er å få litt praktisk kjennskap til et metarammeverk, Next.js. Denne gangen skal vi jukse litt og benytte create-next-app scriptet for å generere utgangspunktet vårt. Fokuset her er på oppsettet og ikke detaljene, så beklager på forhånd til de som får brekninger av _enginerring-view_. Du må gjerne pynte på det selv underveis om det hjelper :)
+Målet med workshopen er å få litt praktisk kjennskap til et metarammeverk, Next.js. Denne gangen skal vi jukse litt og benytte create-next-app scriptet for å generere utgangspunktet vårt. Fokuset her er på oppsettet og ikke detaljene, så beklager på forhånd til de som får brekninger av _enginerring-view_. Du må gjerne pynte på det selv underveis om det hjelper 🙂✨
 
-Mange av dere har sikkert erfaring med flere av disse konseptene fra før, men bruk lenkene til å sette dere mer inn i det som måtte være nytt. Poenget er heller ikke her å bli først ferdig, men gjøre seg kjent med prinsippene underveis.
+Mange av dere har sikkert erfaring med flere av disse konseptene fra før, men bruk lenkene til å sette dere mer inn i det som måtte være nytt. Poenget er heller ikke her å bli først ferdig, men gjøre seg kjent med prinsippene underveis. 🏁
 
 ---
 
-## Prerequisites
+## Prerequisites 🛠️
 
 - [node med npm](https://nodejs.org/en)
 - [git](https://git-scm.com/)
 
 ---
 
-## Workshop
+## Workshop 🧑‍💻
 
-### Sette opp Next.js
+### Sette opp Next.js ⚡
 
 Vi jukser litt og benytter oss av et script for å sette opp det grunnleggende. Velg __Eslint__  på eslint, __No__ på tailwind (om du ikke har veldig lyst på Tailwind da), __Yes__ på `src/` directory, __Yes__ på App Router, __Yes__ på turbopack og __No__ på å tilpasse import aliasene så er vi i gang. 
 
-#### __1:__ Create Next App
+#### __1:__ Create Next App 🆕
 
 ```
 npx create-next-app@latest basic-next --typescript
 ```
 
-**Merk:** dette lager en ny mappe `basic-next`. 
+**Merk:** dette lager en ny mappe `basic-next`. 📁
 
 ```bash
 Need to install the following packages:
@@ -64,26 +64,26 @@ Installing devDependencies:
 - @eslint/eslintrc
 ```
 
-Next.js kommer med standardkonfigurasjoner som tar seg av det meste som trengs for å kjøre applikasjonen vår. Next.js-teamet har tatt mange valg for oss, og gjort det lettere å få opp en enkel applikasjon raskt. Men under panseret finner vi de samme byggeklossene som vi så på i forrige workshop, mer eller mindre pakket inn.
+Next.js kommer med standardkonfigurasjoner som tar seg av det meste som trengs for å kjøre applikasjonen vår. Next.js-teamet har tatt mange valg for oss, og gjort det lettere å få opp en enkel applikasjon raskt. Men under panseret finner vi de samme byggeklossene som vi så på i forrige workshop, mer eller mindre pakket inn. 🧩
 
-__Node__
+__Node__ 🟩
 Next.js bruker Node.js-moduler på serversiden, for eksempel for å håndtere server-side-rendering (SSR, ISR), http/https, etc. Next.js kommer også med en annen runtime, Edge Runtime, som blir brukt til middleware (Feks routing regler som redirects, rewrites og headere) men den støtter ikke alle Node.js api'ene og noen pakker vil ikke fungere. Du kan lese mer om Edge Runetime [her.](https://nextjs.org/docs/app/api-reference/edge)
 
-__Webpack__
+__Webpack__ 🛠️
 Next.js bruker foreløpig også Webpack under panseret (i produksjon), og det er mulig å gjøre endringer på webpack-configen om man skulle ønske eller ha behov for det. Men det er ikke anbefalt, og man kan risikere at nye versjoner av Next.js ikke er kompatible med spesielle webpack-configer. Du kan lese mer om Custom Webpack Config i Next.js [her](https://nextjs.org/docs/app/api-reference/next-config-js/webpack). Turbopack omtales som etterfølgeren til Webpack, og er laget av folkene back webpack sammen med Vercel som står bak Next.js. Foreløpig kan man benytte Turbopack til dev-server, men den er ikke klar for produksjon helt enda. Du kan lese mer om Turbopack [her](https://nextjs.org/docs/architecture/turbopack).
 
-__SWC / Babel__
+__SWC / Babel__ 🏗️
 Fra versjon 12 bruker Next.js SWC til kompilering, men tilbyr full bakoverkompatibilitet for de som har tilpassede babel-konfigurasjoner. Når en app har et tilpasset babel-oppsett vil Next.js automatisk "opt-out" av SWC for kompilering, og benytte Babel på samme måte som tidligere versjoner. Den bruker da en standard med `next/babel` preset. Dette burde dekke de fleste behov, men kan også tilpasse Babel-oppsettet om man har behov for det. Dette gjøres ved å opprette en `.babelrc` fil på rotnivå i prosjektet (eller `babel.config.js`). Hvis en av disse filene finnes vil de ta over babel-konfigurasjoen, og man kan tilpasse den etter behov. Les mer om konfigurering av Babel [her](https://nextjs.org/docs/pages/building-your-application/configuring/babel).
 
 ---
 
-## Routing
+## Routing 🗺️
 
 Vi kan bruke Next.js sin innebygde app-router ved å opprette en app-mappe i src-mappen.
 
 #### 2: src/app/about/page.tsx
 
-Lag en mappe, `about` i `app` og legg en `page.tsx`-fil i mappen:
+Lag en mappe, `about` i `app` og legg en `page.tsx`-fil i mappen: 📄
 
 ```tsx
 // src/app/about/page.tsx
@@ -103,7 +103,7 @@ export default About;
 
 #### 3: src/app/components/header/Header.tsx
 
-For å gjøre det litt lettere kan vi legge inn en komponent for en meny/header:
+For å gjøre det litt lettere kan vi legge inn en komponent for en meny/header: 🧭
 
 ```tsx
 // src/app/components/header/Header.tsx
@@ -127,13 +127,13 @@ const Header: FC = () => {
 export default Header;
 ```
 
-kopier inn css filen som ligger i repoet under `app/components/header.module.css` inn i mappen sammen med `Header.tsx`.
+kopier inn css filen som ligger i repoet under `app/components/header.module.css` inn i mappen sammen med `Header.tsx`. 🎨
 
 ---
 
 #### 4: src/app/layout.tsx
 
-En `layout.tsx` fil i `app`-mappen vil gjøre seg gjeldende for alle `page.tsx` filer lenger ned i hierarkiet en seg selv, så ved å oppdatere `layout.tsx` filen i `app`-mappen kan vi legge inn `Header` for alle sidene vi lager.
+En `layout.tsx` fil i `app`-mappen vil gjøre seg gjeldende for alle `page.tsx` filer lenger ned i hierarkiet en seg selv, så ved å oppdatere `layout.tsx` filen i `app`-mappen kan vi legge inn `Header` for alle sidene vi lager. 🏗️
 
 ```tsx
 // src/app/layout.tsx
@@ -151,13 +151,13 @@ import Header from "./components/header/Header";
 
 #### 5: src/app/about/[name]/page.tsx
 
-Og om du får utslett av at det er så og si ustilet, kan du stile den selv, eller legge inn `header.module.css` filen fra dette repoet ved siden av `Header.tsx`. Generert av ChatGPT. Men fokuset i denne workshopen er ikke html og sminke.
+Og om du får utslett av at det er så og si ustilet, kan du stile den selv, eller legge inn `header.module.css` filen fra dette repoet ved siden av `Header.tsx`. Generert av ChatGPT. Men fokuset i denne workshopen er ikke html og sminke. 💄
 
 ---
 
 #### 6: src/app/about/[name]/page.tsx
 
-Routes kan også være dynamiske, ved å bruke `[]` i mappenavnene. For eksempel kan vi legge en mappe i `about` og kalle den `[name]` og legge en `page.tsx` fil i den:
+Routes kan også være dynamiske, ved å bruke `[]` i mappenavnene. For eksempel kan vi legge en mappe i `about` og kalle den `[name]` og legge en `page.tsx` fil i den: 🔀
 
 ```tsx
 // src/app/about/[name]/page.tsx
@@ -176,7 +176,7 @@ const AboutName: FC<ownProps> = async ({ params }) => {
 export default AboutName;
 ```
 
-Du kan lese mer om app-router [her](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) og dynamic routes [her](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes). Dette var bare for å demonstrere noe av det Next.js gjør for oss ut av boksen.
+Du kan lese mer om app-router [her](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) og dynamic routes [her](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes). Dette var bare for å demonstrere noe av det Next.js gjør for oss ut av boksen. 📦
 
 "Route handlers" (tidligere kalt API-routes) lar deg opprette egne request handlers ved å benytte `Request` og `Response` API'ene. De kan benyttes hvor som helst i `app`-mappen, på samme måte som `page.tsx` ved å opprette en `route.ts`-fil (men man kan ikke ha en page og en route fil i samme segment). Disse handler'ene vil bli deployet som serverless funksjoner når du deployer appen via Vercel.
 
@@ -184,7 +184,7 @@ Du kan lese mer om app-router [her](https://nextjs.org/docs/app/building-your-ap
 
 #### 7: src/app/api/companies/route.ts
 
-For å opprette en Route Handler oppretter vi en `route.ts` fil på ønsket sti i prosjketet. Man kan plassere en `route.ts` fil der man måtte ønske, men for oversiktlighetens skyld plasserer vi den i en egen `api` mappe i `app`. Da blir url'en til endpunktet i dette tilfellet `/api/companies`:
+For å opprette en Route Handler oppretter vi en `route.ts` fil på ønsket sti i prosjketet. Man kan plassere en `route.ts` fil der man måtte ønske, men for oversiktlighetens skyld plasserer vi den i en egen `api` mappe i `app`. Da blir url'en til endpunktet i dette tilfellet `/api/companies`: 🛣️
 
 ```tsx
 // src/app/api/companies/route.ts
@@ -206,18 +206,18 @@ En route handler kan for eksempel håndtere tilkobling til en database eller en 
 
 I dette eksempelet vil routen ta imot en POST request, og søke etter en streng i enhetsregsiteret. Denne funksjonen vil av Vercel bli bygget og deployet som en serverless funksjon, en AWS lambda med Edge runtime. Vercel håndterer dette for oss i dette eksempelet, men det finnes andre prosjekter som skal kunne hjelpe til med denne prosessen om man ønsker å håndtere bygg og deploy av dette selv (ikke testet).
 
-På dev-serveren vil endepunktet være tilgjengelig på http://localhost:3000/api/companies, og kan testes i feks. Postman.
+På dev-serveren vil endepunktet være tilgjengelig på http://localhost:3000/api/companies, og kan testes i feks. Postman. 🧪
 
 
 ---
 
 #### 8: src/app/companies/page.tsx
 
-Opprett filen `src/app/companies/page.tsx`
+Opprett filen `src/app/companies/page.tsx` 🏢
 
 Dette er bare et raskt eksempel for å bruke endepunktet til noe:
 
-Vi kan legge til en komponent som benytter det nye endepunktet. Opprett en ny mappe, `companies` og legge en `page.tsx` i den. Ved å legge inn `'use client'` i toppen av filen forteller vi Next.js at denne filen skal kjøre på klienten, og ikke rendres på serveren (SSR). Filer som rendrer på serveren vil ikke ha muligheten til å bruke blandt annet hooks, men kan gjøre sidene betraktelig raskere ved å for eksempel hente inn data på forhånd før siden sendes til klienten.
+Vi kan legge til en komponent som benytter det nye endepunktet. Opprett en ny mappe, `companies` og legge en `page.tsx` i den. Ved å legge inn `'use client'` i toppen av filen forteller vi Next.js at denne filen skal kjøre på klienten, og ikke rendres på serveren (SSR). Filer som rendrer på serveren vil ikke ha muligheten til å bruke blandt annet hooks, men kan gjøre sidene betraktelig raskere ved å for eksempel hente inn data på forhånd før siden sendes til klienten. ⚡
 
 ```tsx
 // src/app/companies/page.tsx
@@ -315,35 +315,35 @@ export default Companies;
 
 ---
 
-Teamet bak Next.js har også laget et bibliotek for henting av data på klienten, SWR, som medfører en rekke fordeler som cache, revalidering, refetching, m.m. Les mer om SWR [her](https://swr.vercel.app/). Har du mer tid til overs kan du gjerne skrive om funksjonen over til å bruke SWR for å hente data isteden.
+Teamet bak Next.js har også laget et bibliotek for henting av data på klienten, SWR, som medfører en rekke fordeler som cache, revalidering, refetching, m.m. Les mer om SWR [her](https://swr.vercel.app/). Har du mer tid til overs kan du gjerne skrive om funksjonen over til å bruke SWR for å hente data isteden. 🔄
 
 ---
 
-## Deploy
+## Deploy 🚢
 
 #### 9: Opprett repo
-Vi antar at de fleste av dere er kjent med Git og Github, så opprett et repo for prosjektet med Githubkontoen din og push koden dit.
+Vi antar at de fleste av dere er kjent med Git og Github, så opprett et repo for prosjektet med Githubkontoen din og push koden dit. 🐙
 
-Det er flere måter vi kan deploye en Next.js applikasjon, men for enkelthetens skyld vil vi i denne workshopen deploye den med Vercel. Vercel har en hobby-tier som er ypperlig for vår bruk. Om du ikke har gjort det på forhånd kan du gå til [vercel.com/new](https://vercel.com/new) og velge "Continue with Github". Her velger du repoet du pushet koden til. Det kan hende du må gi Vercel tilgang til riktige repoer for at det skal dukke opp i listen.
+Det er flere måter vi kan deploye en Next.js applikasjon, men for enkelthetens skyld vil vi i denne workshopen deploye den med Vercel. Vercel har en hobby-tier som er ypperlig for vår bruk. Om du ikke har gjort det på forhånd kan du gå til [vercel.com/new](https://vercel.com/new) og velge "Continue with Github". Her velger du repoet du pushet koden til. Det kan hende du må gi Vercel tilgang til riktige repoer for at det skal dukke opp i listen. 🌐
 
 ---
 
 #### 10: Vercel konto
  
- Opprett en hobby-konto hos Vercel, om du ikke har en fra før. Fortsett med Github, og gi Vercel tilgang til repoet du pushet til i steg 9.
+Opprett en hobby-konto hos Vercel, om du ikke har en fra før. Fortsett med Github, og gi Vercel tilgang til repoet du pushet til i steg 9. 🆓
 
 ---
 
 #### 12: Importer repoet du opprettet og deploy prosjketet ditt. 
 
-Når repoet du opprettet er listet opp, trykk på `Import`for å begynne oppsettet.
-Om du ikke har gjort noen spesielle endringer i oppsettet for appen burde standardoppsettet for en Next app fungere, og du kan trykke `Deploy` for å starte prosessen. Vercel vil da pulle repoet ditt, bygge appen, og deploye den til sin serverløse arkitektur. Med gratulasjoner og konfetti burde den fullføre uten problemer, og du kan trykke `Continue to Dashboard` og observere at appen din har fått tildelt et domene.
+Når repoet du opprettet er listet opp, trykk på `Import`for å begynne oppsettet. 📥
+Om du ikke har gjort noen spesielle endringer i oppsettet for appen burde standardoppsettet for en Next app fungere, og du kan trykke `Deploy` for å starte prosessen. Vercel vil da pulle repoet ditt, bygge appen, og deploye den til sin serverløse arkitektur. Med gratulasjoner og konfetti burde den fullføre uten problemer, og du kan trykke `Continue to Dashboard` og observere at appen din har fått tildelt et domene. 🎉
 
-Under `Settings` øverst kan du endre en del innstillinger, bland annet legge til environment variabler om du skulle ha behov for å koble til en database eller liknende. Om du skal sette opp auth for den deployede appen lenger ned, er det her du må legge inn env-variablene som trengs.
+Under `Settings` øverst kan du endre en del innstillinger, bland annet legge til environment variabler om du skulle ha behov for å koble til en database eller liknende. Om du skal sette opp auth for den deployede appen lenger ned, er det her du må legge inn env-variablene som trengs. ⚙️
 
 ---
 
-### Alternativer
+### Alternativer 🔄
 
 Selv om Vercel er utviklerene bak Next.js, og har gjort prosessen veldig strømlinjeformet og tilpasset deres økosystem, er man ikke bundet til å deploye applikasjonene sine med Vercel.
 
@@ -356,19 +356,19 @@ Selv om Vercel er utviklerene bak Next.js, og har gjort prosessen veldig strøml
 
 ### Docker
 
-Om du har Docker installert på maskinen kan du bygge og kjøre prosjketet som en Docker-container
+Om du har Docker installert på maskinen kan du bygge og kjøre prosjketet som en Docker-container 🐳
 
 ---
 
 #### 13: Dockerfile
 
-Kopier inn `Dockerfile` fra mappen `demo` i dette repoet til roten på prosjektet (`basic-next`mappen), et helt enkelt oppsett som kjører appen med nodejs. 
+Kopier inn `Dockerfile` fra mappen `demo` i dette repoet til roten på prosjektet (`basic-next`mappen), et helt enkelt oppsett som kjører appen med nodejs. 📦
 
 ---
 
 #### 14: next.config.mjs
 
-Legg til `output: "standalone"` i `next.config.ts`:
+Legg til `output: "standalone"` i `next.config.ts`: 🏗️
 
 ```js
  output: "standalone",
@@ -378,13 +378,13 @@ Legg til `output: "standalone"` i `next.config.ts`:
 
 #### 15: public
 
-Om du ikke har en `public` mappe på roten av prosjektet (altså i mappen `basic-next`) kan det være du må opprette den mappen også.
+Om du ikke har en `public` mappe på roten av prosjektet (altså i mappen `basic-next`) kan det være du må opprette den mappen også. 📂
 
 ---
 
 #### 16: Docker build
 
-Da skal du kunne bygge et docker-image av prosjektet: 
+Da skal du kunne bygge et docker-image av prosjektet: 🏗️
 
 ```bash 
 docker build -t basic-react-test .
@@ -394,7 +394,7 @@ docker build -t basic-react-test .
 
 #### 17: Docker run 
 
-Og kjøre imaget: 
+Og kjøre imaget: ▶️
 ```bash
 docker run -d -p 3000:3000 basic-react-test
 ```
@@ -403,17 +403,17 @@ Når du kjører som et docker-image får du ikke automatisk gleden av serverless
 
 ---
 
-## Autentisering
+## Autentisering 🔐
 
  [NextAuth.js](https://next-auth.js.org/), eller nå [Auth.js](https://authjs.dev/), er go-to pakken for autentisering i Next.js. Denne pakken kommer med ferdige `provider`e for et stort antall autentiseringstilbydere. Og kan utvides til å håndtere det selv om man skulle ha behov for det.
 
-I denne workshopen skal vi implementere Github som en autentiserings-provider.
+I denne workshopen skal vi implementere Github som en autentiserings-provider. 🐙
 
 ---
 
 #### 18: Github application
 
- Gå til [https://github.com/settings/developers](https://github.com/settings/developers) og opprett en ny OAuth App og gi applikasjonen et passende navn. 
+Gå til [https://github.com/settings/developers](https://github.com/settings/developers) og opprett en ny OAuth App og gi applikasjonen et passende navn. 📝
 For lokal utvikling set `Homepage URL` til `http://localhost:3000/` 
 Og `Authorization callback URL` til `http://localhost:3000/api/auth/callback/github`. 
 
@@ -439,7 +439,7 @@ For å benytte de nøklene vi har generert på en trygg måte, kan vi legge dem 
 
 #### 21: NEXTAUTH_SECRET
 
-Generer en egen `NEXTAUTH_SECRET` i en terminal med (på Mac, linux, WSL eller Cygwin)
+Generer en egen `NEXTAUTH_SECRET` i en terminal med (på Mac, linux, WSL eller Cygwin) 🔑
 
 ```bash
 openssl rand -base64 32
@@ -449,7 +449,7 @@ openssl rand -base64 32
 
 #### 22: .env.local 
 
-Opprett filen `.env.local` på roten av prosjketet
+Opprett filen `.env.local` på roten av prosjketet 🗒️
 
 ```env
 # .env.local
@@ -466,7 +466,7 @@ For å benytte oss av autentiseringen må vi legge inn litt config og sette opp 
 
 #### 23: src/auth.ts
 
-Opprett filen `src/auth.ts`:
+Opprett filen `src/auth.ts`: 🛡️
 
 ```tsx
 // src/auth.ts
@@ -493,8 +493,8 @@ Og setter opp en route for å fange autentiseringspathene, ved å bruke `[]` som
 
 #### 24: src/app/api/auth/[...nextauth]
 
-Opprett mappene `src/app/api/auth/[...nextauth]`.
-Opprett filen `src/app/api/auth/[...nextauth]`:
+Opprett mappene `src/app/api/auth/[...nextauth]`. 📁
+Opprett filen `src/app/api/auth/[...nextauth]`: 🛡️
 
 ```tsx
 // src/app/api/auth/[...nextauth]/route.ts
@@ -516,7 +516,7 @@ For å få tilgang til sesjonen fra klienten, må vi wrappe applikasjonen i en `
 
 #### 25: src/app/Providers
 
-Opprett filen `src/app/Providers`:
+Opprett filen `src/app/Providers`: 🏗️
 
 ```tsx
 // src/app/Providers.tsx
@@ -538,7 +538,7 @@ export default function Providers({ session, children }: { session: Session | nu
 
 #### 26: src/app/layout.tsx
 
-Oppdater `src/app/layout.tsx`, legg til importene øverst og oppdater `RootLayout` funkksjonen som nedenfor:
+Oppdater `src/app/layout.tsx`, legg til importene øverst og oppdater `RootLayout` funkksjonen som nedenfor: 🛠️
 
 ```tsx
 // src/app/layout.tsx
@@ -575,7 +575,7 @@ Så kan vi kalle `useSession()` i en client component, for demonstrasjonens skyl
 
 #### 27: src/app/components/header/CurrentUser.tsx
 
-Opprett filen `src/app/components/header/CurrentUser.tsx` som nedenfor:
+Opprett filen `src/app/components/header/CurrentUser.tsx` som nedenfor: 👤
 
 ```tsx
 // src/app/components/header/CurrentUser.tsx
@@ -604,7 +604,7 @@ export default CurrentUser;
 
 #### 28: src/app/components/header/Header.tsx
 
-Oppdater `src/app/components/header/Header.tsx` til å bruke den nye `CurrentUser` komponenten:
+Oppdater `src/app/components/header/Header.tsx` til å bruke den nye `CurrentUser` komponenten: 🧑‍💻
 
 ```tsx
 // src/app/components/header/Header.tsx
@@ -622,7 +622,7 @@ import CurrentUser from "./CurrentUser"
 
 #### 32: src/app/user/page.tsx
 
-Legg til en ny `src/app/user/page.tsx`, som en client component, for å bruke sesjonen til noe:
+Legg til en ny `src/app/user/page.tsx`, som en client component, for å bruke sesjonen til noe: 👥
 
 ```tsx
 // src/app/user/page.tsx
@@ -648,10 +648,10 @@ const User = () => {
 export default User;
 ```
 
-Superbra html og css sålangt ...
+Superbra html og css sålangt ... 😎
 
 --- 
 
 #### 33: Sminke 💄 💅
 
-Få denne applikasjonen til så skinne med dine magiske fingre, og litt html og css ... om du vil
+Få denne applikasjonen til så skinne med dine magiske fingre, og litt html og css ... om du vil ✨
