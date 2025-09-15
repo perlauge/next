@@ -79,7 +79,16 @@ Fra versjon 12 bruker Next.js SWC til kompilering, men tilbyr full bakoverkompat
 
 ## Routing 🗺️
 
-Vi kan bruke Next.js sin innebygde app-router ved å opprette en app-mappe i src-mappen.
+Vi kan bruke Next.js sin innebygde app-router ved å opprette en app-mappe i src-mappen. Du kan lese mer om Next sin filbaserte routing her: 🚏
+
+- [https://nextjs.org/docs/app/getting-started/layouts-and-pages](Layouts and Pages)
+
+Kopier også filen `codeacademy.svg` fra mappen `ressurser` og legg en i mappen `public` i prosjektet ditt. Som standard vil filer lagt i `public` ble med i byggeprosessen og serveres fra rotnivå på den ferdige siden. Feks: http://localhost:3000/codeacademy.svg på det lokale dev miljøet ditt. Du kan lese mer om dette her:
+
+- [https://nextjs.org/docs/app/api-reference/file-conventions/public-folder](public Folder)
+
+Slett også filen `page.module.css` i mappen `src/app`. 🗑️
+
 
 #### 2: src/app/about/page.tsx
 
@@ -87,16 +96,21 @@ Lag en mappe, `about` i `app` og legg en `page.tsx`-fil i mappen: 📄
 
 ```tsx
 // src/app/about/page.tsx
-const About = () => {
+import Image from "next/image";
+
+export default function Home() {
   return (
     <div>
-      <h1>Om denne siden</h1>
-      <p>Dette er litt dyptgående info om &quot;om&quot;-siden ...</p>
+      <Image
+        src="/codeacademy.svg"
+        alt="Codeacademy logo"
+        width={300}
+        height={300}
+        priority
+      />
     </div>
   );
-};
-
-export default About;
+}
 ```
 
 ---
@@ -108,18 +122,18 @@ For å gjøre det litt lettere kan vi legge inn en komponent for en meny/header:
 ```tsx
 // src/app/components/header/Header.tsx
 import Link from "next/link";
-import { FC } from "react";
-import styles from "./header.module.css";
 
-const Header: FC = () => {
+const Header = () => {
   return (
-    <header className={styles.header}>
-      <ul className={styles.navList}>
-        <li className={styles.navItem}><Link href="/">Hjem</Link></li>
-        <li className={styles.navItem}><Link href="/about">Om</Link></li>
-        <li className={styles.navItem}><Link href="/about/deg">Om deg</Link></li>
-        <li className={styles.navItem}><Link href="/companies">Firmaer</Link></li>
-      </ul>
+    <header>
+      <div className="container">
+        <nav>
+          <Link href="/">Hjem</Link>
+          <Link href="/about">Om</Link>
+          <Link href="/about/deg">Om deg</Link>
+          <Link href="/companies" className="active">Firmaer</Link>
+        </nav>
+      </div>
     </header>
   );
 };
@@ -127,24 +141,42 @@ const Header: FC = () => {
 export default Header;
 ```
 
-kopier inn css filen som ligger i repoet under `app/components/header.module.css` inn i mappen sammen med `Header.tsx`. 🎨
-
 ---
 
 #### 4: src/app/layout.tsx
 
 En `layout.tsx` fil i `app`-mappen vil gjøre seg gjeldende for alle `page.tsx` filer lenger ned i hierarkiet en seg selv, så ved å oppdatere `layout.tsx` filen i `app`-mappen kan vi legge inn `Header` for alle sidene vi lager. 🏗️
 
+Overskriv hele `layout.tsx` som nedenfor, eller kopier over `layout.tsx` filen fra `ressurser` mappen 👌
+Kopier også inn `globals.css` og `favicon.ico` filene fra `ressurser`-mappen og erstatt filene med samme navn i `src/app` i prosjektet ditt, side om side med `layout.tsx` 👯
+
 ```tsx
 // src/app/layout.tsx
-...
+import type { Metadata } from "next";
 import Header from "./components/header/Header";
-...
-<body className={`${geistSans.variable} ${geistMono.variable}`}>
-  <Header />
-  {children}
-</body>
-...
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "Code Academy!",
+  description: "Lær Next.js med Code Academy",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        <Header />
+        <div className="content">
+          {children}
+        </div>
+      </body>
+    </html>
+  );
+}
 ```
 
 ---
@@ -208,16 +240,18 @@ I dette eksempelet vil routen ta imot en POST request, og søke etter en streng 
 
 På dev-serveren vil endepunktet være tilgjengelig på http://localhost:3000/api/companies, og kan testes i feks. Postman. 🧪
 
-
 ---
 
 #### 8: src/app/companies/page.tsx
 
 Opprett filen `src/app/companies/page.tsx` 🏢
 
-Dette er bare et raskt eksempel for å bruke endepunktet til noe:
+Dette er bare et raskt eksempel for å bruke endepunktet til noe, og benytte ulike funksjoner i React/Next som `useState`, `useCallback`, `useEffect`:
 
 Vi kan legge til en komponent som benytter det nye endepunktet. Opprett en ny mappe, `companies` og legge en `page.tsx` i den. Ved å legge inn `'use client'` i toppen av filen forteller vi Next.js at denne filen skal kjøre på klienten, og ikke rendres på serveren (SSR). Filer som rendrer på serveren vil ikke ha muligheten til å bruke blandt annet hooks, men kan gjøre sidene betraktelig raskere ved å for eksempel hente inn data på forhånd før siden sendes til klienten. ⚡
+
+Les mer om server og client komponenter her:
+- [https://nextjs.org/docs/app/getting-started/server-and-client-components](Server and Client Components)
 
 ```tsx
 // src/app/companies/page.tsx
@@ -247,7 +281,7 @@ interface Enhet {
 const Company: FC<CompanyProps> = ({ enhet }) => {
   const { navn, naeringskode1 } = enhet;
   return <tr>
-    <td>{navn}</td>
+    <td className="company-name">{navn}</td>
     <td>{naeringskode1?.kode ? naeringskode1?.kode : '-'}</td>
     <td>{naeringskode1?.beskrivelse ? naeringskode1?.beskrivelse : '-'}</td>
   </tr>
@@ -283,15 +317,16 @@ const Companies = () => {
   }
 
   return (
-    <div>
+    <main className="container">
       <h1>Firmaer</h1>
-      <h2>Søk</h2>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="search">Søk etter firma: </label>
-        <input type="text" name="search" />
-        <button type="submit">Søk</button>
-      </form>
-      <table>
+      <div className="search-container">
+        <form className="search-box" onSubmit={onSubmit}>
+          <input name="search" type="search" placeholder="Søk etter firma:" aria-label="Søk etter firma" />
+          <button type="submit">Søk</button>
+        </form>
+      </div>
+
+      <table className="company-table">
         <thead>
           <tr>
             <th>Navn</th>
@@ -306,7 +341,7 @@ const Companies = () => {
           })}
         </tbody>
       </table>
-    </div>
+    </main>
   );
 };
 
@@ -362,7 +397,7 @@ Om du har Docker installert på maskinen kan du bygge og kjøre prosjketet som e
 
 #### 13: Dockerfile
 
-Kopier inn `Dockerfile` fra mappen `demo` i dette repoet til roten på prosjektet (`basic-next`mappen), et helt enkelt oppsett som kjører appen med nodejs. 📦
+Kopier inn `Dockerfile` fra mappen `ressurser` i dette repoet til roten på prosjektet (`basic-next`mappen), et helt enkelt oppsett som kjører appen med nodejs. 📦
 
 ---
 
